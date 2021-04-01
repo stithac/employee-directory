@@ -4,10 +4,14 @@ import Results from "../Results"
 
 class Table extends Component {
   state = {
-    // data: [],
     results:[],
-    error: ""
+    error: "",
+    nameSort: "ascending",
+    emailSort: "ascending",
+    officeSort: "ascending",
+    cellSort: "ascending"
   };
+
 
   // When the component mounts, make the API call to get 50 employees
   componentDidMount() {
@@ -16,36 +20,139 @@ class Table extends Component {
       .catch(err => console.log(err));
   }
 
-  sortTable = (event) => {
-        let sortedEmployees = [...this.state.results];
-        let header = event.target.id;
+    sortTableByName = () => {
+            let sortedEmployees = [...this.state.results];
 
-        console.log(header); // Testing
+            if ( this.state.nameSort === "ascending"){
+                sortedEmployees.sort((a, b) => {
+                    if (a.name.first < b.name.first) {
+                        return -1;
+                    }
+                    if (a.name.first > b.name.first) {
+                        return 1;
+                    }
 
-        sortedEmployees.sort((a, b) => {
-            if (a.name.first < b.name.first) {
-            return -1;
+                    return 0;
+                });
+
+
+                this.setState({results: sortedEmployees});
+                this.setState({nameSort : "descending"})
             }
-            if (a.name.first> b.name.first) {
-            return 1;
+
+            if ( this.state.nameSort === "descending"){
+                sortedEmployees.sort((a, b) => {
+                    if (a.name.first < b.name.first) {
+                    return 1;
+                    }
+                    if (a.name.first> b.name.first) {
+                    return -1;
+                    }
+                    return 0;
+                });
+
+
+                this.setState({results: sortedEmployees});
+                this.setState({nameSort : "ascending"})
             }
-            return 0;
-        });
 
-        this.setState({results: sortedEmployees});
-        console.log(sortedEmployees); // Testing
-    }
+            console.log(sortedEmployees); // Testing
+        }
 
+    sortTableByEmail = () => {
+            let sortedEmployees = [...this.state.results];
+
+            if ( this.state.emailSort === "ascending"){
+                sortedEmployees.sort((a, b) => {
+                    if (a.email < b.email) {
+                        return -1;
+                    }
+                    if (a.email > b.email) {
+                        return 1;
+                    }
+
+                    return 0;
+                });
+
+
+                this.setState({results: sortedEmployees});
+                this.setState({emailSort : "descending"})
+            }
+
+            if ( this.state.emailSort === "descending"){
+                sortedEmployees.sort((a, b) => {
+                    if (a.email < b.email) {
+                    return 1;
+                    }
+                    if (a.email> b.email) {
+                    return -1;
+                    }
+                    return 0;
+                });
+
+
+                this.setState({results: sortedEmployees});
+                this.setState({emailSort : "ascending"})
+            }
+
+            console.log(sortedEmployees); // Testing
+        }
+
+        sortTableByOfficeNumber = () => {
+            let sortedEmployees = [...this.state.results];
+
+            if ( this.state.officeSort === "ascending"){
+                sortedEmployees.sort((a, b) => {
+                    return parseInt(a.phone.charAt(1)) - parseInt(b.phone.charAt(1));
+                });
+
+                this.setState({results: sortedEmployees});
+                this.setState({officeSort : "descending"})
+            }
+
+            if ( this.state.officeSort === "descending"){
+                sortedEmployees.sort((a, b) => {
+                    return parseInt(b.phone.charAt(1)) - parseInt(a.phone.charAt(1));
+                });
+
+                this.setState({results: sortedEmployees});
+                this.setState({officeSort : "ascending"})
+            }
+
+        }
+
+        sortTableByCellNumber = () => {
+            let sortedEmployees = [...this.state.results];
+
+            if ( this.state.cellSort === "ascending"){
+                sortedEmployees.sort((a, b) => {
+                    return parseInt(a.cell.charAt(1)) - parseInt(b.cell.charAt(1));
+                });
+
+                this.setState({results: sortedEmployees});
+                this.setState({cellSort : "descending"})
+            }
+
+            if ( this.state.cellSort === "descending"){
+                sortedEmployees.sort((a, b) => {
+                    return parseInt(b.cell.charAt(1)) - parseInt(a.cell.charAt(1));
+                });
+
+                this.setState({results: sortedEmployees});
+                this.setState({cellSort : "ascending"})
+            }
+
+        }
   render() {
     return (
         <table className="table">
         <thead>
             <tr>
                 <th>Picture</th>
-                <th id="name" onClick={this.sortTable}>Name</th>
-                <th>Office Phone</th>
-                <th>Cellphone</th>
-                <th>Email</th>
+                <th><button type="button" onClick={this.sortTableByName}>Name</button></th>
+                <th><button type="button" onClick={this.sortTableByOfficeNumber}>Office Phone</button></th>
+                <th><button type="button" onClick={this.sortTableByCellNumber}>Cell Phone</button></th>
+                <th><button type="button" onClick={this.sortTableByEmail}>Email</button></th>
             </tr>
         </thead>
         <Results results={this.state.results} />

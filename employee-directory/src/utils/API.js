@@ -6,7 +6,7 @@ import $ from 'jquery';
 export default {
   getEmployees: function() {
     return $.ajax({
-        url: 'https://randomuser.me/api/?results=50',
+        url: 'https://randomuser.me/api/?results=50&nat=us',
         dataType: 'json',
         success: function(data) {
           console.log(data);
