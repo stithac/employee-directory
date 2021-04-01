@@ -1,4 +1,4 @@
-import { get } from "jquery";
+import $ from "jquery";
 import React, { Component } from "react";
 import API from "../../utils/API";
 import Results from "../Results";
@@ -8,6 +8,7 @@ class Table extends Component {
   state = {
     search:"",
     results:[],
+    filteredResults: [],
     error: "",
     nameSort: "ascending",
     emailSort: "ascending",
@@ -18,24 +19,26 @@ class Table extends Component {
     // When the component mounts, make the API call to get 50 employees
     componentDidMount() {
         API.getEmployees()
-        .then(res => this.setState({ results: res.results}))
+        .then(res => this.setState({ results: res.results, filteredResults:res.results}))
         .catch(err => console.log(err));
     }
 
     handleInputChange = event => {
-        // let filteredEmployees = [...this.state.results];
-        this.setState({ search: event.target.value });
 
-        const results = this.state.results;
-        console.log(event.target.value);
-        const filteredEmployees = results.filter(result => result.name.first.toLowerCase().includes(event.target.value.toLowerCase()) || result.email.toLowerCase().includes(event.target.value.toLowerCase()) || result.phone.includes(event.target.value) || result.cell.includes(event.target.value));
-        console.log(filteredEmployees);
-        this.setState({results: filteredEmployees});
+        this.setState({ search: event.target.value }
+        , function(){
+            const results = this.state.results;
+
+            const filteredEmployees = results.filter(result =>
+                result.name.first.toLowerCase().includes(event.target.value.toLowerCase()) || result.email.toLowerCase().includes(event.target.value.toLowerCase()) || result.phone.includes(event.target.value) || result.cell.includes(event.target.value)
+            );
+            console.log(filteredEmployees);
+            this.setState({filteredResults: filteredEmployees});
+        });
+
+
     };
 
-    clearInput = event => {
-        document.getElementById("searchInput").value = "";
-    }
 
     sortTableByName = () => {
         let sortedEmployees = [...this.state.results];
@@ -157,7 +160,7 @@ class Table extends Component {
     return (
         <div>
             <form>
-                <input id="searchInput" onChange={this.handleInputChange}></input>
+                <input id="searchInput" onKeyUp={this.handleInputChange} ></input>
             </form>
             <table className="table">
                 <thead>
@@ -169,7 +172,7 @@ class Table extends Component {
                         <th><button type="button" onClick={this.sortTableByEmail}>Email</button></th>
                     </tr>
                 </thead>
-                <Results results={this.state.results} />
+                <Results results={this.state.filteredResults} />
             </table>
         </div>
 
