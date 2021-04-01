@@ -16,13 +16,33 @@ class Table extends Component {
       .catch(err => console.log(err));
   }
 
+  sortTable = (event) => {
+        let sortedEmployees = [...this.state.results];
+        let header = event.target.id;
+
+        console.log(header); // Testing
+
+        sortedEmployees.sort((a, b) => {
+            if (a.name.first < b.name.first) {
+            return -1;
+            }
+            if (a.name.first> b.name.first) {
+            return 1;
+            }
+            return 0;
+        });
+
+        this.setState({results: sortedEmployees});
+        console.log(sortedEmployees); // Testing
+    }
+
   render() {
     return (
         <table className="table">
         <thead>
             <tr>
                 <th>Picture</th>
-                <th>Name</th>
+                <th id="name" onClick={this.sortTable}>Name</th>
                 <th>Office Phone</th>
                 <th>Cellphone</th>
                 <th>Email</th>
