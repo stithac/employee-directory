@@ -6,7 +6,7 @@ function Results(props) {
     <tbody>
         {props.results.map(result => (
                 <tr key={result.login.uuid}>
-                    <td><img alt="Employee Photo" src={result.picture.large} /></td>
+                    <td><img alt="Employee" src={result.picture.large} /></td>
                     <td><p> {result.name.first} {result.name.last}</p></td>
                     <td><p> {result.phone} </p></td>
                     <td><p> {result.cell} </p></td>

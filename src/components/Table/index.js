@@ -1,4 +1,3 @@
-import $ from "jquery";
 import React, { Component } from "react";
 import API from "../../utils/API";
 import Results from "../Results";
@@ -55,7 +54,7 @@ class Table extends Component {
             });
 
 
-            this.setState({results: sortedEmployees});
+            this.setState({filteredResults: sortedEmployees});
             this.setState({nameSort : "descending"})
         }
 
@@ -70,7 +69,7 @@ class Table extends Component {
                 return 0;
             });
 
-            this.setState({results: sortedEmployees});
+            this.setState({filteredResults: sortedEmployees});
             this.setState({nameSort : "ascending"})
         }
 
@@ -90,7 +89,7 @@ class Table extends Component {
                 return 0;
             });
 
-            this.setState({results: sortedEmployees});
+            this.setState({filteredResults: sortedEmployees});
             this.setState({emailSort : "descending"})
         }
 
@@ -105,7 +104,7 @@ class Table extends Component {
                 return 0;
             });
 
-            this.setState({results: sortedEmployees});
+            this.setState({filteredResults: sortedEmployees});
             this.setState({emailSort : "ascending"})
         }
 
@@ -119,7 +118,7 @@ class Table extends Component {
                 return parseInt(a.phone.charAt(1)) - parseInt(b.phone.charAt(1));
             });
 
-            this.setState({results: sortedEmployees});
+            this.setState({filteredResults: sortedEmployees});
             this.setState({officeSort : "descending"})
         }
 
@@ -128,7 +127,7 @@ class Table extends Component {
                 return parseInt(b.phone.charAt(1)) - parseInt(a.phone.charAt(1));
             });
 
-            this.setState({results: sortedEmployees});
+            this.setState({filteredResults: sortedEmployees});
             this.setState({officeSort : "ascending"})
         }
     }
@@ -140,7 +139,7 @@ class Table extends Component {
                     return parseInt(a.cell.charAt(1)) - parseInt(b.cell.charAt(1));
                 });
 
-            this.setState({results: sortedEmployees});
+            this.setState({filteredResults: sortedEmployees});
             this.setState({cellSort : "descending"})
             }
 
@@ -149,7 +148,7 @@ class Table extends Component {
                     return parseInt(b.cell.charAt(1)) - parseInt(a.cell.charAt(1));
                 });
 
-            this.setState({results: sortedEmployees});
+            this.setState({filteredResults: sortedEmployees});
             this.setState({cellSort : "ascending"})
             }
         }
@@ -158,9 +157,9 @@ class Table extends Component {
     return (
         <div>
             <form>
-                <input id="searchInput" onKeyUp={this.handleInputChange} ></input>
+                <label>Filter the Employee table: </label><input id="searchInput" onKeyUp={this.handleInputChange} ></input>
             </form>
-            <table className="table">
+            <table className="table table-hover">
                 <thead>
                     <tr>
                         <th></th>
