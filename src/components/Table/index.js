@@ -19,7 +19,7 @@ class Table extends Component {
     // When the component mounts, make the API call to get 50 employees
     componentDidMount() {
         API.getEmployees()
-        .then(res => this.setState({ results: res.results, filteredResults:res.results}))
+        .then(res => this.setState({ results: res.results, filteredResults: res.results}))
         .catch(err => console.log(err));
     }
 
@@ -32,10 +32,9 @@ class Table extends Component {
             const filteredEmployees = results.filter(result =>
                 result.name.first.toLowerCase().includes(event.target.value.toLowerCase()) || result.email.toLowerCase().includes(event.target.value.toLowerCase()) || result.phone.includes(event.target.value) || result.cell.includes(event.target.value)
             );
-            console.log(filteredEmployees);
+
             this.setState({filteredResults: filteredEmployees});
         });
-
 
     };
 
@@ -75,7 +74,6 @@ class Table extends Component {
             this.setState({nameSort : "ascending"})
         }
 
-            // console.log(sortedEmployees); // Testing
     }
 
     sortTableByEmail = () => {
@@ -175,7 +173,6 @@ class Table extends Component {
                 <Results results={this.state.filteredResults} />
             </table>
         </div>
-
 
     );
   }
