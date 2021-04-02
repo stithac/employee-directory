@@ -157,11 +157,11 @@ class Table extends Component {
     return (
         <div>
             <form>
-                <label>Filter the Employee table: </label><input id="searchInput" onKeyUp={this.handleInputChange} ></input>
+                <label>Search Employees: </label><input id="searchInput" onKeyUp={this.handleInputChange} ></input>
             </form>
-            <table className="table table-hover">
+            <table className="table table-hover table-striped">
                 <thead>
-                    <tr>
+                    <tr className="turquoise">
                         <th></th>
                         <th><button type="button" onClick={this.sortTableByName}>Name</button></th>
                         <th><button type="button" onClick={this.sortTableByOfficeNumber}>Office Phone</button></th>

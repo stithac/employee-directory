@@ -1,18 +1,25 @@
 import React from "react";
 import Navbar from "./components/Navbar";
+import Jumbotron from "./components/Jumbotron";
 import Wrapper from "./components/Wrapper";
 import Table from "./components/Table";
 import Footer from "./components/Footer";
 
 function App() {
   return (
+    <div>
+      <Navbar />
+      <Jumbotron />
       <div className="container">
-        <Navbar />
+
         <Wrapper>
             <Table />
         </Wrapper>
-        <Footer />
+
       </div>
+      <Footer />
+    </div>
+
   );
 }
 

@@ -6,11 +6,11 @@ function Results(props) {
     <tbody>
         {props.results.map(result => (
                 <tr key={result.login.uuid}>
-                    <td><img alt="Employee" src={result.picture.large} /></td>
-                    <td><p> {result.name.first} {result.name.last}</p></td>
-                    <td><p> {result.phone} </p></td>
-                    <td><p> {result.cell} </p></td>
-                    <td><p> {result.email} </p></td>
+                    <td><img alt="Employee" src={result.picture.medium} /></td>
+                    <td className="align-middle"><p> {result.name.first} {result.name.last}</p></td>
+                    <td className="align-middle"><p> {result.phone} </p></td>
+                    <td className="align-middle"><p> {result.cell} </p></td>
+                    <td className="align-middle"><p> {result.email} </p></td>
                 </tr>
             ))}
         </tbody>

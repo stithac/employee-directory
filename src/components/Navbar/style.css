@@ -1,3 +1,12 @@
-nav.navbar.navbar-default {
-    margin-bottom: 0;
+nav.navbar {
+    padding:0 20px;
   }
+
+.navbar-brand {
+  color:#75A5AD !important;
+  font-weight:bold;
+}
+
+button {
+  font-weight:normal !important;
+}
