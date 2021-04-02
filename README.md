@@ -10,12 +10,12 @@ The application utilizes React and stateful components to manage and respond to 
 
 ## Components
 The application includes the following components. They are all stored in the /src/Components folder
-* Footer
-* Jumbotron
-* Navbar
-* Results
-* Table
-* Wrapper
+* Footer - footer of the page
+* Jumbotron - top banner on the page
+* Navbar - top navigation
+* Results - tbody (employee data) in the table
+* Table - table with functions for sorting/filtering
+* Wrapper - wraps main components
 
 ## Site Images
 ### Homepage
