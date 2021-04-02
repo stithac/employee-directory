@@ -1,4 +1,4 @@
-# hw19 Employee Tracker, 1 APR 21
+# hw19 Employee Directory, 1 APR 21
 
 #### By Ashley Stith
 
@@ -9,7 +9,7 @@ This application is an employee directory created with React.  The application i
 The application utilizes React and stateful components to manage and respond to user events.  In addition, it uses an external API ([Random User API](https://randomuser.me/)) to pull in user data to test.
 
 ## Components
-The application includes the following components. They are all stored in the /src/Components folder
+The application includes the following components. They are all stored in the /src/components folder
 * Footer - footer of the page
 * Jumbotron - top banner on the page
 * Navbar - top navigation
