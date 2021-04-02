@@ -51,7 +51,7 @@ npm i
 Please email [Ashley Stith](mailto:ashleyc.stith@gmail.com) with questions or for additional inforamtion.
 
 ## Contribution Guidelines
-Direct link to repository: https://github.com/stithac/employee-tracker
+Direct link to repository: https://github.com/stithac/employee-directory
 
 ## Deployment
 The site is deployed to Github pages: https://stithac.github.io/employee-directory/
