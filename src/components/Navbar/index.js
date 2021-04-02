@@ -12,7 +12,6 @@ function Navbar() {
       <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div className="navbar-nav">
           <button className="nav-item nav-link active" href="#">Home <span className="sr-only">(current)</span></button>
-          <button className="nav-item nav-link" href="#">Card View</button>
 
         </div>
       </div>
