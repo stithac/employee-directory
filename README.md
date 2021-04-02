@@ -8,6 +8,15 @@ This application is an employee directory created with React.  The application i
 ## Features
 The application utilizes React and stateful components to manage and respond to user events.  In addition, it uses an external API ([Random User API](https://randomuser.me/)) to pull in user data to test.
 
+## Components
+The application includes the following components. They are all stored in the /src/Components folder
+* Footer
+* Jumbotron
+* Navbar
+* Results
+* Table
+* Wrapper
+
 ## Site Images
 ### Homepage
 The homepage displays the employee directory.  A search input field is included to allow users to filter the table. (Note: Application may have changed slightly since taking screenshot)
