@@ -54,4 +54,4 @@ Please email [Ashley Stith](mailto:ashleyc.stith@gmail.com) with questions or fo
 Direct link to repository: https://github.com/stithac/employee-tracker
 
 ## Deployment
-The site is deployed to Github pages:
+The site is deployed to Github pages: https://stithac.github.io/employee-directory/
