@@ -1,6 +1,7 @@
 import React from "react";
 import "./style.css";
 
+// Function maps the results pulled from the API call and renders the table rows with a column for name, phone, cell and email
 function Results(props) {
   return (
     <tbody>

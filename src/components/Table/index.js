@@ -22,22 +22,21 @@ class Table extends Component {
         .catch(err => console.log(err));
     }
 
+    // When the input changes, the filteredResults state is updated and the table is re-rendered with the updated results
     handleInputChange = event => {
-
         this.setState({ search: event.target.value }
         , function(){
             const results = this.state.results;
-
+            // filter each of the columns based on the input value
             const filteredEmployees = results.filter(result =>
                 result.name.first.toLowerCase().includes(event.target.value.toLowerCase()) || result.email.toLowerCase().includes(event.target.value.toLowerCase()) || result.phone.includes(event.target.value) || result.cell.includes(event.target.value)
             );
-
+            // set filteredResults to the value of filteredEmployees
             this.setState({filteredResults: filteredEmployees});
         });
-
     };
 
-
+    // Sort by the name. If the nameSort state is ascending, sort ascending. If nameSort state is descending, sort descending
     sortTableByName = () => {
         let sortedEmployees = [...this.state.results];
 
@@ -52,8 +51,6 @@ class Table extends Component {
 
                 return 0;
             });
-
-
             this.setState({filteredResults: sortedEmployees});
             this.setState({nameSort : "descending"})
         }
@@ -72,9 +69,9 @@ class Table extends Component {
             this.setState({filteredResults: sortedEmployees});
             this.setState({nameSort : "ascending"})
         }
-
     }
 
+    // Sort by the email. If the emailSort state is ascending, sort ascending. If emailSort state is descending, sort descending
     sortTableByEmail = () => {
         let sortedEmployees = [...this.state.results];
 
@@ -107,9 +104,9 @@ class Table extends Component {
             this.setState({filteredResults: sortedEmployees});
             this.setState({emailSort : "ascending"})
         }
-
     }
 
+    // Sort by the office number. If the officeSort state is ascending, sort ascending. If officeSort state is descending, sort descending
     sortTableByOfficeNumber = () => {
         let sortedEmployees = [...this.state.results];
 
@@ -132,6 +129,7 @@ class Table extends Component {
         }
     }
 
+    // Sort by the cell number. If the cellSort state is ascending, sort ascending. If cellSort state is descending, sort descending
     sortTableByCellNumber = () => {
         let sortedEmployees = [...this.state.results];
             if ( this.state.cellSort === "ascending"){
@@ -153,28 +151,28 @@ class Table extends Component {
             }
         }
 
-  render() {
-    return (
-        <div>
-            <form>
-                <label>Search Employees: </label><input id="searchInput" onKeyUp={this.handleInputChange} ></input>
-            </form>
-            <table className="table table-hover table-striped">
-                <thead>
-                    <tr className="turquoise">
-                        <th></th>
-                        <th><button type="button" onClick={this.sortTableByName}>Name</button></th>
-                        <th><button type="button" onClick={this.sortTableByOfficeNumber}>Office Phone</button></th>
-                        <th><button type="button" onClick={this.sortTableByCellNumber}>Cell Phone</button></th>
-                        <th><button type="button" onClick={this.sortTableByEmail}>Email</button></th>
-                    </tr>
-                </thead>
-                <Results results={this.state.filteredResults} />
-            </table>
-        </div>
-
-    );
-  }
+    // Render the Search input and table header. Calls the Results component to render the tbody and results
+    render() {
+        return (
+            <div>
+                <form>
+                    <label>Search Employees: </label><input id="searchInput" onKeyUp={this.handleInputChange} ></input>
+                </form>
+                <table className="table table-hover table-striped">
+                    <thead>
+                        <tr className="turquoise">
+                            <th></th>
+                            <th><button type="button" onClick={this.sortTableByName}>Name</button></th>
+                            <th><button type="button" onClick={this.sortTableByOfficeNumber}>Office Phone</button></th>
+                            <th><button type="button" onClick={this.sortTableByCellNumber}>Cell Phone</button></th>
+                            <th><button type="button" onClick={this.sortTableByEmail}>Email</button></th>
+                        </tr>
+                    </thead>
+                    <Results results={this.state.filteredResults} />
+                </table>
+            </div>
+        );
+    }
 }
 
 export default Table;
